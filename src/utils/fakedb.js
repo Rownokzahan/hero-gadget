@@ -11,11 +11,13 @@ const addToDb = id => {
 }
 
 const removeFromDb = id => {
-
+    const cart = getCartFromDb()
+    delete cart[id]
+    setCartToDb(cart)
 }
 
 const emptyCartFromDb = () => {
-    
+    localStorage.removeItem('shopping-cart')
 }
 
 const getCartFromDb = () => {

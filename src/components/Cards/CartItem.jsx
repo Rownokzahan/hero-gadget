@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../App'
+import { removeFromDb } from '../../utils/fakedb'
 
 const CartItem = ({ product }) => {
+ 
   const { id, name, price, quantity, picture } = product
+  const { cart, setCart } = useContext(CartContext)
+  
+  const handleRemoveFromCart = product => {
+    const remaining = cart.filter(item => item.id !== product.id)
+    setCart(remaining)
+    removeFromDb(product.id)
+  }
+
   return (
     <li className='flex flex-col py-6 sm:flex-row sm:justify-between'>
       <div className='flex w-full space-x-2 sm:space-x-4'>
@@ -27,7 +38,7 @@ const CartItem = ({ product }) => {
           </div>
           <div className='flex text-sm divide-x'>
             <button
-              onClick={() => alert('Item Removed')}
+              onClick={() => handleRemoveFromCart(product)}
               type='button'
               className='flex items-center px-2 py-1 pl-0 space-x-1'
             >
