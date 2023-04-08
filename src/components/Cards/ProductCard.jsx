@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../../App';
 import { addToDb } from '../../utils/fakedb';
+import { toast } from 'react-hot-toast';
 
 const ProductCard = ({ product }) => {
 
@@ -24,6 +25,7 @@ const ProductCard = ({ product }) => {
     setCart(newCart)
     addToDb(product.id)
 
+    toast.success('Product Added! 🛒')
   }
 
   return (

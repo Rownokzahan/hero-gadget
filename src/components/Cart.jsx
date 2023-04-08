@@ -3,6 +3,7 @@ import { CartContext } from '../App';
 import CartItem from './Cards/CartItem';
 import { emptyCartFromDb } from '../utils/fakedb';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const Cart = () => {
 
@@ -19,11 +20,15 @@ const Cart = () => {
     const handleClearCart = () => {
         setCart([])
         emptyCartFromDb()
+
+        toast.error('All Items Removed!')
     }
 
     const handlePlaceOrder = () => {
         setCart([])
         emptyCartFromDb()
+
+        toast.success('Order Placed! 📦')
     }
 
     return (
