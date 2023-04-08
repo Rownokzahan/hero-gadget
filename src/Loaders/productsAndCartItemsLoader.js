@@ -5,7 +5,7 @@ export const productsAndCartItemsLoader = async () => {
     const savedCart = JSON.parse(localStorage.getItem('shopping-cart'))
     const cartItems = [];
     if (savedCart) {
-        for (const id of savedCart) {
+        for (const id in savedCart) {
             const item = products.find(product => product.id === id);
             if (item) {
                 item.quantity = savedCart[id];
