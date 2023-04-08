@@ -8,19 +8,19 @@ export const CartContext = createContext([]);
 
 const App = () => {
 
-  const { products, cartItems } = useLoaderData(); 
+  const { products, cartItems } = useLoaderData();
   const [cart, setCart] = useState(cartItems);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
-      <ProductContext.Provider value={products}>
-        <Header cart={cart} />
+    <ProductContext.Provider value={products}>
+      <CartContext.Provider value={{ cart, setCart }}>
+        <Header />
         <div className='min-h-[calc(100vh-137px)]'>
           <Outlet />
         </div>
         <Footer />
-      </ProductContext.Provider>
-    </CartContext.Provider>
+      </CartContext.Provider>
+    </ProductContext.Provider>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from 'react'
 
 const ProductCard = ({ product }) => {
+
   const { name, picture, price, category } = product
+  
   return (
     <div className='bg-gray-100 p-6 rounded shadow-lg'>
       <img
